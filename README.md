@@ -65,7 +65,7 @@ ExecStart=/home/endereço do seu script/script.sh
    sudo systemctl start unimed.service
    
 6- Verificar o status timer
-   systemctl list-timers --all
+  <p> systemctl list-timers --all</p>
    
 
 
