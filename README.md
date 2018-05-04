@@ -3,11 +3,11 @@
 Consulta de Autorização de Procedimentos  de maneira automatizada.
 
 # Instruções :
-
-1- Fazer uma conta no Tweeter e cadastrar a nova API --> https://apps.twitter.com/
-1.1-Conferir em Permissions se o Access é read and write
-2- Criar os Tokens necessários 
-3- Criar um arquivo keys.py que tenha a seguinte estrutura com os dados obtidos da nova API
+<p>
+1- Fazer uma conta no Tweeter e cadastrar a nova API --> https://apps.twitter.com/</p>
+<p>1.1-Conferir em Permissions se o Access é read and write</p>
+<p>2- Criar os Tokens necessários </p>
+<p>3- Criar um arquivo keys.py que tenha a seguinte estrutura com os dados obtidos da nova API</p>
  
  !/usr/local/bin/python
  ## -*- coding: utf-8 -*-
@@ -19,52 +19,52 @@ Consulta de Autorização de Procedimentos  de maneira automatizada.
     access_token_secret =   'VALOR',
 )
 
-4- Editar a linha 22 do arquivo unimed.py , colocando o endereço de onde esta o formulário inicial de entrada
+<p>4- Editar a linha 22 do arquivo unimed.py , colocando o endereço de onde esta o formulário inicial de entrada</p>
 
-5- Caso deseje você pode automatizar a tarefa de consulta, gerando um script no shell e colocando o mesmo para rodar via cron ou caso o seu sistema utilize o systemd, no nosso caso utilizamos o systemd devido a versão e distribuição do S.O utilizado.
+<p>5- Caso deseje você pode automatizar a tarefa de consulta, gerando um script no shell e colocando o mesmo para rodar via cron ou caso o seu sistema utilize o systemd, no nosso caso utilizamos o systemd devido a versão e distribuição do S.O utilizado.</p>
 
 # Exemplo de configuração do systemd para consulta a cada 6 horas
 
-1- criar um arquivo script para a shell e dar autoridade de execução ao mesmo
-## 
+<p>1- criar um arquivo script para a shell e dar autoridade de execução ao mesmo</p>
+<p>## 
 #!/bin/sh
-python2 /home/endereço de onde esta o script deve estar completo começando a partir da home/script.sh
+python2 /home/endereço de onde esta o script deve estar completo começando a partir da home/script.sh</p>
 
 
-2- Criar o arquivo .timer no diretório system do systemd 
-# unimed.timer
+<p>2- Criar o arquivo .timer no diretório system do systemd </p>
+#unimed.timer
 
-[Unit]
-Description=Roda o programa a cada 6horas
+<p>[Unit]</p>
+<p>Description=Roda o programa a cada 6horas</p>
 
-[Timer]
-# tempo de espera deṕois do boot
-OnBootSec=30min
+<p>[Timer]</p>
+<p>##tempo de espera deṕois do boot</p>
+<p>OnBootSec=30min</p>
 
-# tempo entre cada execução
-OnUnitActiveSec=6h
-Unit=unimed.service
+<p>##tempo entre cada execução</p>
+<p>OnUnitActiveSec=6h</p>
+<p>Unit=unimed.service</p>
 
-[Install]
-WantedBy=multi-user.target
+<p>[Install]</p>
+<p>WantedBy=multi-user.target</p>
 
-3- Criar o arquivo .service no diretório system do systemd
-# unimed.service
+<p>3- Criar o arquivo .service no diretório system do systemd</p>
+<p>##unimed.service</p>
 
-[Unit]
-Description=Consultar a Unimed
+<p>[Unit]</p>
+<p>Description=Consultar a Unimed</p>
 
-[Service]
-ExecStart=/home/endereço do seu script/script.sh
+<p>[Service]</p>
+<p>ExecStart=/home/endereço do seu script/script.sh</p>
 
 
-4- Atualizar o 
-   sudo systemctl daemon-reload
+<p>4- Atualizar o daemon</p>
+<p>   sudo systemctl daemon-reload</p>
 
-5- Iniciar o serviço 
-   sudo systemctl start unimed.service
+<p>5- Iniciar o serviço </p>
+   <p>sudo systemctl start unimed.service</p>
    
-6- Verificar o status timer
+<p>6- Verificar o status timer</p>
   <p> systemctl list-timers --all</p>
    
 
