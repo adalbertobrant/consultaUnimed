@@ -8,7 +8,7 @@ Consulta de autorização de procedimentos de maneira automatizada.
 1. Crie um arquivo keys.py que tenha a seguinte estrutura com os dados obtidos da nova API
  
 ```shell
-!/usr/local/bin/python
+#!/usr/local/bin/python
 keys = dict(consumer_key = 'VALOR', consumer_secret = 'VALOR', access_token = 'VALOR', access_token_secret = 'VALOR')
 ```
 
@@ -23,48 +23,34 @@ keys = dict(consumer_key = 'VALOR', consumer_secret = 'VALOR', access_token = 'V
 python2 /home/nome_do_usuario/script.sh
 ```
 
-<p>2- Criar o arquivo .timer no diretório system do systemd </p>
-#unimed.timer
+1. Crie um arquivo **unimed.timer** no diretório system do systemd
+```
+[Unit]
+Description=Roda o programa a cada 6horas
 
-<p>[Unit]</p>
-<p>Description=Roda o programa a cada 6horas</p>
+[Timer]
+OnBootSec=30min
+OnUnitActiveSec=6h
+Unit=unimed.service
 
-<p>[Timer]</p>
-<p>##tempo de espera deṕois do boot</p>
-<p>OnBootSec=30min</p>
+[Install]
+WantedBy=multi-user.target
+```
 
-<p>##tempo entre cada execução</p>
-<p>OnUnitActiveSec=6h</p>
-<p>Unit=unimed.service</p>
+1. Crie um arquivo **unimed.service** no diretório system do systemd</p>
+```
+[Unit]
+Description=Consultar a Unimed
 
-<p>[Install]</p>
-<p>WantedBy=multi-user.target</p>
+[Service]
+ExecStart=/home/nome_do_usuario/script.sh
+```
 
-<p>3- Criar o arquivo .service no diretório system do systemd</p>
-<p>##unimed.service</p>
+1. Atualize o daemon
+```sudo systemctl daemon-reload```
 
-<p>[Unit]</p>
-<p>Description=Consultar a Unimed</p>
-
-<p>[Service]</p>
-<p>ExecStart=/home/endereço do seu script/script.sh</p>
-
-
-<p>4- Atualizar o daemon</p>
-<p>   sudo systemctl daemon-reload</p>
-
-<p>5- Iniciar o serviço </p>
-   <p>sudo systemctl start unimed.service</p>
+1. Inicie o serviço
+```sudo systemctl start unimed.service```
    
-<p>6- Verificar o status timer</p>
-  <p> systemctl list-timers --all</p>
-   
-
-
-
-
-
-
-
-
-
+1. Verifique o status do timer
+```systemctl list-timers --all```
