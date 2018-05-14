@@ -7,10 +7,10 @@ Consulta de autorização de procedimentos de maneira automatizada.
 1. Crie os tokens necessários
 1. Crie um arquivo keys.py que tenha a seguinte estrutura com os dados obtidos da nova API
  
-'''shell
+```shell
 !/usr/local/bin/python
 keys = dict(consumer_key = 'VALOR', consumer_secret = 'VALOR', access_token = 'VALOR', access_token_secret = 'VALOR')
-'''
+```
 
 1. Edite a linha 22 do arquivo unimed.py, inserindo o endereço de onde está o formulário inicial de entrada
 1. Caso deseje, você pode automatizar a tarefa de consulta, gerando um script no shell e colocando o mesmo para rodar via cron ou caso o seu sistema utilize o systemd, no nosso caso utilizamos o systemd devido a versão e distribuição do S.O utilizado.
@@ -18,10 +18,10 @@ keys = dict(consumer_key = 'VALOR', consumer_secret = 'VALOR', access_token = 'V
 ## Exemplo de configuração do systemd para consulta a cada 6 horas
 1. Crie um arquivo script para a shell e dar autoridade de execução ao mesmo
 
-'''shell
+```shell
 #!/bin/sh
 python2 /home/nome_do_usuario/script.sh
-'''
+```
 
 <p>2- Criar o arquivo .timer no diretório system do systemd </p>
 #unimed.timer
