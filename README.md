@@ -16,14 +16,14 @@ keys = dict(consumer_key = 'VALOR', consumer_secret = 'VALOR', access_token = 'V
 1. Caso deseje, você pode automatizar a tarefa de consulta, gerando um script no shell e colocando o mesmo para rodar via cron ou caso o seu sistema utilize o systemd, no nosso caso utilizamos o systemd devido a versão e distribuição do S.O utilizado.
 
 ## Exemplo de configuração do systemd para consulta a cada 6 horas
-1. Crie um arquivo script para a shell e dar autoridade de execução ao mesmo
+1. Crie um arquivo script para a shell e dê autoridade de execução ao mesmo
 
 ```shell
 #!/bin/sh
 python2 /home/nome_do_usuario/script.sh
 ```
 
-1. Crie um arquivo **unimed.timer** no diretório system do systemd
+1. Crie um arquivo chamado **unimed.timer** no diretório system do systemd
 ```
 [Unit]
 Description=Roda o programa a cada 6horas
@@ -37,7 +37,7 @@ Unit=unimed.service
 WantedBy=multi-user.target
 ```
 
-1. Crie um arquivo **unimed.service** no diretório system do systemd</p>
+1. Crie um arquivo chamado **unimed.service** no diretório system do systemd</p>
 ```
 [Unit]
 Description=Consultar a Unimed
