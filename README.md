@@ -1,35 +1,27 @@
-# consulta Unimed
+# Consulta Unimed
+Consulta de autorização de procedimentos de maneira automatizada.
 
-Consulta de Autorização de Procedimentos  de maneira automatizada.
-
-# Instruções :
-<p>
-1- Fazer uma conta no Tweeter e cadastrar a nova API --> https://apps.twitter.com/</p>
-<p>1.1-Conferir em Permissions se o Access é read and write</p>
-<p>2- Criar os Tokens necessários </p>
-<p>3- Criar um arquivo keys.py que tenha a seguinte estrutura com os dados obtidos da nova API</p>
+## Instruções:
+1. Crie uma conta no Twitter e cadastre uma nova [API](https://apps.twitter.com/)
+1. Confira nas permissões se o acesso é read and write
+1. Crie os tokens necessários
+1. Crie um arquivo keys.py que tenha a seguinte estrutura com os dados obtidos da nova API
  
- !/usr/local/bin/python
- ## -*- coding: utf-8 -*-
+'''shell
+!/usr/local/bin/python
+keys = dict(consumer_key = 'VALOR', consumer_secret = 'VALOR', access_token = 'VALOR', access_token_secret = 'VALOR')
+'''
 
-  keys = dict(
-    consumer_key =          'VALOR',
-    consumer_secret =       'VALOR',
-    access_token =          'VALOR',
-    access_token_secret =   'VALOR',
-)
+1. Edite a linha 22 do arquivo unimed.py, inserindo o endereço de onde está o formulário inicial de entrada
+1. Caso deseje, você pode automatizar a tarefa de consulta, gerando um script no shell e colocando o mesmo para rodar via cron ou caso o seu sistema utilize o systemd, no nosso caso utilizamos o systemd devido a versão e distribuição do S.O utilizado.
 
-<p>4- Editar a linha 22 do arquivo unimed.py , colocando o endereço de onde esta o formulário inicial de entrada</p>
+## Exemplo de configuração do systemd para consulta a cada 6 horas
+1. Crie um arquivo script para a shell e dar autoridade de execução ao mesmo
 
-<p>5- Caso deseje você pode automatizar a tarefa de consulta, gerando um script no shell e colocando o mesmo para rodar via cron ou caso o seu sistema utilize o systemd, no nosso caso utilizamos o systemd devido a versão e distribuição do S.O utilizado.</p>
-
-# Exemplo de configuração do systemd para consulta a cada 6 horas
-
-<p>1- criar um arquivo script para a shell e dar autoridade de execução ao mesmo</p>
-<p>## 
+'''shell
 #!/bin/sh
-python2 /home/endereço de onde esta o script deve estar completo começando a partir da home/script.sh</p>
-
+python2 /home/nome_do_usuario/script.sh
+'''
 
 <p>2- Criar o arquivo .timer no diretório system do systemd </p>
 #unimed.timer
