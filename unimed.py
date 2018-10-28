@@ -18,10 +18,7 @@ from mechanize import Browser
 from keys import keys
 
 # Endereço a ser lido pelo mechanize ,onde esta localizado o formulário de consulta de autorização de serviços
-
 end= ""
-
-
 
 senha =raw_input ("Digite a senha de autorização que esta localizada na guia: ")
 print("")
