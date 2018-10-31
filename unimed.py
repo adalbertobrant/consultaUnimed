@@ -21,9 +21,9 @@ from keys import keys
 end= ""
 
 senha =raw_input ("Digite a senha de autorização que esta localizada na guia: ")
-print("")
-print("A senha digitada foi %s"%senha)
-print("")
+ print("")
+ print("A senha digitada foi %s"%senha)
+ print("")
 
 #Parte para receber a resposta por mensagem no Tweeter
 #
